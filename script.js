@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrollContainer.style.display = 'block';
             }, { once: true });
         } else {
-            feedbackText.textContent = 'Not even close. Try again, sweetie.'; wrongSound.play(); triggerHaptic([50, 50, 50]);
+            feedbackText.textContent = 'stop being a puss, Not even close. Try again.'; wrongSound.play(); triggerHaptic([50, 50, 50]);
             riddleInput.value = '';
         }
     };
