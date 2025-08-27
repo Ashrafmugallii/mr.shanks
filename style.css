@@ -1,0 +1,301 @@
+body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    font-family: 'Poppins', sans-serif; /* Using Poppins now */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Use min-height for better mobile behavior */
+    margin: 0;
+    overflow: hidden;
+    padding: 20px; /* Some padding for smaller screens */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.riddle-container {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 350px; /* Constrain width for mobile readability */
+    width: 100%; /* Ensure it takes full width on smaller screens */
+
+    /* Initial state for animate-in */
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    animation: animate-in 0.8s ease-out forwards;
+}
+
+/* Animation for initial load */
+@keyframes animate-in {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+
+/* This is the class our JavaScript will add to trigger the exit animation */
+.riddle-container.solved {
+    animation: glitch-out 1s forwards;
+}
+
+.sphinx-image {
+    width: 180px; /* Slightly larger for impact */
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.riddle-text {
+    font-size: 1.1em; /* Adjusted for mobile readability */
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+#riddle-input {
+    padding: 12px; /* Larger tap target */
+    font-size: 1.1em;
+    width: calc(100% - 24px); /* Full width minus padding */
+    border-radius: 8px; /* Softer corners */
+    border: 2px solid #555;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 15px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+}
+
+#riddle-input::placeholder {
+    color: #aaa;
+}
+
+#submit-button {
+    padding: 12px 25px; /* Larger tap target */
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff; /* A more vibrant primary button color */
+    color: #ffffff;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#submit-button:hover {
+    background-color: #0056b3;
+}
+
+#submit-button:active {
+    transform: scale(0.98); /* Little press effect */
+}
+
+
+#feedback-text {
+    margin-top: 20px;
+    height: 20px;
+    color: #ff4d4d; /* Red color for wrong answers */
+    font-weight: bold;
+}
+
+/* The animation for when the riddle is solved */
+@keyframes glitch-out {
+    0% { transform: scale(1) translateY(0); opacity: 1; filter: hue-rotate(0deg); }
+    25% { transform: scale(1.05) translateY(-5px) skewX(-5deg); opacity: 0.8; filter: hue-rotate(90deg); }
+    50% { transform: scale(0.95) translateY(5px) skewX(5deg); opacity: 1; filter: hue-rotate(180deg); }
+    75% { transform: scale(1.1) translateY(-10px) skewX(-10deg); opacity: 0.5; filter: hue-rotate(270deg); }
+    100% { transform: scale(0) translateY(100vh); opacity: 0; filter: hue-rotate(360deg); } /* Flies off screen */
+}
+
+/* Added for responsiveness */
+@media (max-width: 400px) {
+    .sphinx-image {
+        width: 150px;
+    }
+    .riddle-text {
+        font-size: 1em;
+    }
+    #riddle-input, #submit-button {
+        font-size: 1em;
+        padding: 10px;
+    }
+}
+
+/* REPLACE old scroll/parallax styles with this */
+
+.scroll-container {
+    display: none; /* Hidden by default, shown by JS */
+    height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    scroll-snap-type: y mandatory; /* Makes scrolling feel like pages */
+}
+
+.chapter {
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: start; /* Each chapter snaps to the top */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.chapter-content {
+    max-width: 800px;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+.chapter h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.chapter p {
+    font-size: 1.5em;
+}
+
+.prophecy-text {
+    font-family: 'Kalam', cursive;
+    font-size: 2.2em;
+    font-style: italic;
+}
+
+/* Elements to be animated */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* This class will be added by JavaScript when the element is visible */
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Final scene styling for the grand finale */
+.final-scene {
+    background-color: #1a1a1a;
+}
+
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .chapter h2 {
+        font-size: 1.8em;
+    }
+    .chapter p {
+        font-size: 1.2em;
+    }
+    .prophecy-text {
+        font-size: 1.5em;
+    }
+}
+
+/* ADD THIS to the bottom of your style.css */
+
+.final-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.polaroid {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 15px 15px 70px 15px;
+    box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
+    position: relative;
+    opacity: 0; /* Initially hidden */
+}
+
+/* This class triggers the entire animation sequence */
+.polaroid.start-animation {
+    animation: polaroid-enter 1.5s ease-out forwards;
+    animation-delay: 1s; /* Wait a second after scrolling to the scene */
+}
+
+.photo-container {
+    background-color: #333;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+.photo-container img { width: 100%; height: 100%; object-fit: cover; }
+
+.photo-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #d2b48c; /* Sepia-tone overlay */
+    opacity: 1;
+}
+
+.polaroid.start-animation .photo-overlay {
+    animation: photo-develop 8s ease-out forwards;
+    animation-delay: 2.5s; /* Start developing after polaroid enters */
+}
+
+.caption {
+    position: absolute;
+    bottom: 10px; left: 15px; right: 15px;
+    text-align: center;
+    font-size: 1.4em;
+    font-family: 'Kalam', cursive;
+    color: #333;
+    opacity: 0;
+}
+
+.polaroid.start-animation .caption {
+    animation: fade-in 2s ease-out forwards;
+    animation-delay: 5s; /* Fade in while photo is developing */
+}
+
+.final-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    padding: 15px 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 30px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+    opacity: 0;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.final-content-container.start-animation .final-button {
+    animation: fade-in 2s ease-out forwards;
+    animation-delay: 7s; /* Appears at the very end */
+}
+.final-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Keyframe Animations */
+@keyframes polaroid-enter {
+    from { opacity: 0; transform: scale(0.8) rotate(-5deg); }
+    to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes photo-develop {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

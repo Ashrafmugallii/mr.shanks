@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>A Challenge Appears</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="riddle-container" id="riddle-container">
+        <img src="assets/sphinx.png" alt="A flamboyant cartoon sphinx" class="sphinx-image">
+        <p class="riddle-text">
+            I’m famous for handling meat with grace,<br>
+Always stuffing my mouth, never leaving a trace.<br>
+You might call me a pro at this game, <br>
+But really I just go by my name (thats a hint). <br>
+
+what am i? 
+        </p>
+        <input type="text" id="riddle-input" placeholder="Your Answer..." autofocus>
+        <button id="submit-button">Solve</button>
+        <p id="feedback-text"></p>
+    </div>
+    <div class="scroll-container" id="scroll-container">
+
+        <section class="chapter" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/grand-central.jpg');">
+            <div class="chapter-content">
+                <p class="animate-on-scroll prophecy-text">"The Oracle of Grand Central foretold that a man... would one day escape to the mountains. It is you. You are the chosen one: <strong>Alaadipussy Rex</strong>."</p>
+            </div>
+        </section>
+    
+        <section class="chapter" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/metro-north.jpg');">
+            <div class="chapter-content">
+                <h2 class="animate-on-scroll">First, the hero must board the Iron Chariot of the North...</h2>
+                <p class="animate-on-scroll" style="transition-delay: 0.2s;">...and face the harrowing trial of finding a seat with a working power outlet.</p>
+            </div>
+        </section>
+    
+        <section class="chapter" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/hike.jpg');">
+            <div class="chapter-content">
+                <h2 class="animate-on-scroll">Then, he shall conquer the formidable Mount of Beacons...</h2>
+                <p class="animate-on-scroll" style="transition-delay: 0.2s;">...a feat fueled by gas station coffee and pure, unadulterated spite.</p>
+            </div>
+        </section>
+    
+        <section class="chapter" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/kayak.jpg');">
+            <div class="chapter-content">
+                <h2 class="animate-on-scroll">And navigate the treacherous currents of the Hudson...</h2>
+                <p class="animate-on-scroll" style="transition-delay: 0.2s;">...battling not mythical beasts, but the wakes from tourist boats.</p>
+            </div>
+        </section>
+    
+        <section class="chapter final-scene" id="final-scene">
+            </section>
+    
+    </div>
+    
+    <div class="final-content-container" id="final-content">
+        <div class="polaroid" id="polaroid">
+            <div class="photo-container">
+                <img src="assets/alaadipussy.jpg" alt="The hero, Alaadipussy Rex">
+                <div class="photo-overlay"></div>
+            </div>
+            <div class="caption" id="final-caption">
+                </div>
+        </div>
+        <a href="#" class="final-button" id="final-button">Accept the Prophecy</a>
+    </div>
+        
+
+    <audio id="correct-sound" src="assets/correct.wav" preload="auto"></audio>
+    <audio id="wrong-sound" src="assets/wrong.wav" preload="auto"></audio>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
